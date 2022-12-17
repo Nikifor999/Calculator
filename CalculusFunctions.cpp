@@ -14,8 +14,9 @@ bool isDigit(char c)
 //check if char c is a operator
 bool isOp(char c)
 {
-	return (c == '+' || c == '-' || c == '/' || c == '*' || c == '(' || c == ')' || c == '^');
+	return (c == '+' || c == '-' || c == '/' || c == '*' || c == '(' || c == ')' || c == '^' || c == '%');
 }
+
 //determine the precedence of an operator
 int getPrecedence(char c) {
 	switch (c)
@@ -23,6 +24,7 @@ int getPrecedence(char c) {
 	case '+':
 	case '-': return 1;
 	case '*':
+	case '%':
 	case '/': return 2;
 	case '(':
 	case ')': return 3;
@@ -35,6 +37,7 @@ double operate(double val1, double val2, char c) {
 	if (c == '+') return val1 + val2;
 	if (c == '-') return val1 - val2;
 	if (c == '*') return val1 * val2;
+	if (c == '%')return ((val1 * val2) / 100);
 	if (c == '^') return pow(val1, val2);
 	return val1 / val2;
 }
